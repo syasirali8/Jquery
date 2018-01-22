@@ -1,0 +1,31 @@
+jQuery(document).ready(function() {
+				jQuery(document).on('change', 'input.tmcp-radio', function(event) {
+					var limit = 0;
+					if (jQuery(this).val() == '3 Pair _1') {
+						threepairs(3);
+					}else if(jQuery(this).val() == '5 Pair_2'){
+						threepairs(5);
+					}
+				});
+				threepairs (1);
+				function threepairs (inputsss=1) {
+					var limit = inputsss;
+					jQuery('.tm-qty').each(function(index, el) {
+						jQuery(this).val('0');
+					});
+					jQuery('.tm-qty').unbind();	
+					jQuery('.tm-qty').on('keydown keyup keypress blur change input', function() {
+						var h = jQuery(this);
+						var t = 0;
+						jQuery('.tm-qty').each(function(index, el) {
+							t += parseInt(jQuery(this).val());
+						});
+							console.log(t);
+							if (t > limit) {
+								h.val(0);
+								alert('Sorry, '+limit+' items max!');
+							}
+
+					});		
+				}
+		});
