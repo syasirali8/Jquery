@@ -1,0 +1,18 @@
+
+	jQuery(document).on('click', '.tm-field-display, .tcp-active', function(event) {
+		event.preventDefault();
+		console.log('1');
+		if (jQuery(this).hasClass('tcp-active')) {
+			jQuery(this).removeClass('tcp-active');
+			jQuery(this).closest('li').find('.tm-quantity').hide();
+			jQuery(this).closest('li').find('.tm-field-display label input[type="checkbox"]').attr('checked', false);
+		}else{
+			jQuery(this).addClass('tcp-active');
+			jQuery(this).closest('li').addClass('tc-active');
+
+			jQuery(this).closest('li').find('.tm-field-display label input[type="checkbox"]').attr('checked', true);
+
+			jQuery(this).closest('li').find('.tm-quantity').show();
+			jQuery(this).closest('li').find('.tm-quantity input').removeAttr('disabled').addClass('tm-qty tm-bsbb');
+		}
+	});
